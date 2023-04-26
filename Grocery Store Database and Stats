@@ -1,0 +1,25 @@
+--Create a grocery store database
+
+CREATE TABLE book_store ( id INTEGER PRIMERY KEY, title TEXT, author TEXT, pages INTEGER, price INTEGER);
+
+INSERT INTO book_store VALUES ( 1, "In search of lost time", "Marcel Proust", 350, 10);
+INSERT INTO book_store VALUES (2, "Ulysses", "James Joyce", 570, 15);
+INSERT INTO book_store VALUES (3, "Don Quixote", "Miguel de Cervantes",  780, 25);
+INSERT INTO book_store VALUES (4, "One hundred years of solitude", "Gabriel Garcia Marquez", 345, 10);
+INSERT INTO book_store VALUES (5, "The great gatsby", "F. Scott Fitzgerald", 250, 10);
+INSERT INTO book_store VALUES (6, "Moby dick", "Herman Melville", 860, 35);
+INSERT INTO book_store VALUES (7, "War and peace", "Leo Tolstoy", 458, 15);
+INSERT INTO book_store VALUES (8, "Hamlet", "William Shakespeare", 450, 14);
+INSERT INTO book_store VALUES (9, "The odyssey", "Homer", 870, 20);
+INSERT INTO book_store VALUES (10, "Madame bovary", "Gustave Flaubert", 150, 8);
+INSERT INTO book_store VALUES (11, "The divine comedy", "Dante Alighieri", 1050, 25);
+INSERT INTO book_store VALUES (12, "Lolita", "Vladimir Nabokov", 245, 45);
+INSERT INTO book_store VALUES (13, "The brothers karamazov", "Fyodor Dostoyevsky", 560, 25);
+INSERT INTO book_store VALUES (14, "Crime and punishment", "Fyodor Dostoyevsky", 780, 14);
+INSERT INTO book_store VALUES (15, "Wuthering heights", "Emily Bronte", 350, 15);
+
+--Display title, author and price where price is greater than 25 and ordered by price.
+SELECT title, author, price  FROM book_store WHERE price > 25 ORDER BY price;
+
+--Display the sum price where price is less than 25.
+SELECT SUM(price) FROM book_store WHERE price < 25; 
