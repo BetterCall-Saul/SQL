@@ -1,4 +1,4 @@
---Create a grocery store database
+-- Create a grocery store database --
 
 CREATE TABLE book_store ( id INTEGER PRIMERY KEY, title TEXT, author TEXT, pages INTEGER, price INTEGER);
 
@@ -18,8 +18,8 @@ INSERT INTO book_store VALUES (13, "The brothers karamazov", "Fyodor Dostoyevsky
 INSERT INTO book_store VALUES (14, "Crime and punishment", "Fyodor Dostoyevsky", 780, 14);
 INSERT INTO book_store VALUES (15, "Wuthering heights", "Emily Bronte", 350, 15);
 
---Display title, author and price where price is greater than 25 and ordered by price.
+-- Display title, author and price where price is greater than 25 and ordered by price --
 SELECT title, author, price  FROM book_store WHERE price > 25 ORDER BY price;
 
---Display the sum price where price is less than 25.
+-- Display the sum price where price is less than 25 --
 SELECT SUM(price) FROM book_store WHERE price < 25; 
