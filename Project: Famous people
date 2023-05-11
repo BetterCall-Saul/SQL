@@ -1,0 +1,144 @@
+/* Create table about the people and what they do here */
+
+CREATE TABLE Artist (
+    Artist_id INTEGER,
+    First_name TEXT,
+    Last_name TEXT,
+    Born TEXT,
+    Died TEXT,
+    Popularity NUMERIC
+);
+
+INSERT INTO Artist
+VALUES ( 1, "Elvis", "Presley", "January 8, 1935", "August 16, 1977", 83.18 );
+INSERT INTO Artist
+VALUES ( 2, "Aretha", "Franklin", "March 25, 1942", "August 16, 2018", 81.57 );
+INSERT INTO Artist
+VALUES ( 3, "Cher", "N/A", "May 20, 1946", "N/A", 80.60 );
+INSERT INTO Artist
+VALUES ( 4, "Janis", "Joplin", "January 19, 1943", "October 4, 1970", 80.06 );
+INSERT INTO Artist
+VALUES ( 5, "Maria", "Callen", "December 2, 1923", "September 16, 1977", 78.28 );
+INSERT INTO Artist
+VALUES ( 6, "Tina", "Turner", "November 26, 1939", "N/A", 76.57 );
+INSERT INTO Artist
+VALUES ( 7, "Frank", "Sinatra", "December 12, 1915", "May 14, 1998", 76.46 );
+INSERT INTO Artist
+VALUES ( 8, "Joan", "Baez", "January 9, 1941", "N/A", 76.05 );
+INSERT INTO Artist
+VALUES ( 9, "Jim", "Morrison", "December 8, 1943", "July 3, 1971", 75.49 );
+INSERT INTO Artist
+VALUES ( 10, "Barbra", "Streisand", "April 24, 1942", "N/A", 73.74 );
+
+CREATE TABLE Song (
+    Artist_id INTEGER,
+    Rating INTEGER,
+    Song_name TEXT
+);
+
+INSERT INTO Song
+VALUES ( 1, 1, "That's alright" );
+INSERT INTO Song
+VALUES ( 1, 2, "Hound dog" );
+INSERT INTO Song
+VALUES ( 1, 3, "Jailhouse rock" );
+INSERT INTO Song
+VALUES ( 2, 1, "Respect" );
+INSERT INTO Song
+VALUES ( 2, 2, "Amazing grace" );
+INSERT INTO Song
+VALUES ( 2, 3, "Rock steady" );
+INSERT INTO Song
+VALUES ( 3, 1, "Gypsies, tramps & thieves" );
+INSERT INTO Song
+VALUES ( 3, 2, "If I could turn back time" );
+INSERT INTO Song
+VALUES ( 3, 3, "Believe" );
+INSERT INTO Song
+VALUES ( 4, 1, "What good can drinkin' do" );
+INSERT INTO Song
+VALUES ( 4, 2, "Trouble in mind" );
+INSERT INTO Song
+VALUES ( 4, 3, "Piece of my heart" );
+INSERT INTO Song
+VALUES ( 5, 1, "Vissi D'arte" );
+INSERT INTO Song
+VALUES ( 5, 2, "Un bel di vedremo" );
+INSERT INTO Song
+VALUES ( 5, 3, "La mamma morta" );
+INSERT INTO Song
+VALUES ( 6, 1, "What's love got to do with it" );
+INSERT INTO Song
+VALUES ( 6, 2, "Nutbush city limits" );
+INSERT INTO Song
+VALUES ( 6, 3, "Proud mary" );
+INSERT INTO Song
+VALUES ( 7, 1, "All alone" );
+INSERT INTO Song
+VALUES ( 7, 2, "Are you lonesome tonight" );
+INSERT INTO Song
+VALUES ( 7, 3, "Here's that rainy day" );
+INSERT INTO Song
+VALUES ( 8, 1, "Diamonds & rust" );
+INSERT INTO Song
+VALUES ( 8, 2, "The night they drove old dixie down" );
+INSERT INTO Song
+VALUES ( 8, 3, "There but for fortune" );
+INSERT INTO Song
+VALUES ( 9, 1, "Riders on the storm" );
+INSERT INTO Song
+VALUES ( 9, 2, "Break on through" );
+INSERT INTO Song
+VALUES ( 9, 3, "Light my fire" );
+INSERT INTO Song
+VALUES ( 10, 1, "Woman in love" );
+INSERT INTO Song
+VALUES ( 10, 2, "Guilty" );
+INSERT INTO Song
+VALUES ( 10, 3, "The main event/fight" );
+
+CREATE TABLE Country (
+    Artist_id INTEGER,
+    Birthplace_city TEXT,
+    Birthplace_state TEXT,
+    Birthplace_country TEXT,
+    Deathplace_city TEXT,
+    Deathplace_state TEXT,
+    Deathplace_country TEXT
+);
+
+INSERT INTO Country
+VALUES ( 1, "Tupelo", "Mississippi", "USA", "Memphis", "Tennessee", "USA" );
+INSERT INTO Country
+VALUES ( 2, "Memphis", "Tennessee", "USA", "Detroit", "Michigan", "USA" );
+INSERT INTO Country
+VALUES ( 3, "El centro", "California", "USA", "N/A", "N/A", "N/A" );
+INSERT INTO Country
+VALUES ( 4, "Port arthur", "Texas", "USA", "Los angeles", "California", "USA" );
+INSERT INTO Country
+VALUES ( 5, "New york city", "New York", "USA", "Paris", "N/A", "France" );
+INSERT INTO Country
+VALUES ( 6, "Brownsville", "Tennessee", "USA", "N/A", "N/A", "N/A" );
+INSERT INTO Country
+VALUES ( 7, "Hoboken", "New jersey", "USA", "Los angeles", "California", "USA" );
+INSERT INTO Country
+VALUES ( 8, "Staten island", "New york", "USA", "N/A", "N/A", "N/A" );
+INSERT INTO Country
+VALUES ( 9, "Melbourne", "Florida", "USA", "Paris", "N/A", "France" );
+INSERT INTO Country
+VALUES ( 10, "New york city", "New york", "USA", "N/A", "N/A", "N/A" );
+
+/* What is the name of each artists top rated song? */
+SELECT First_name, Last_name, Song_name AS Top_rated_song
+FROM Artist AS a
+JOIN Song AS s ON a.Artist_id=s.Artist_id WHERE Rating = 1;
+
+/* Which, if any, artists are still alive? */
+SELECT First_name, Last_name FROM Artist AS a
+JOIN Country AS c ON a.Artist_id=c.Artist_id WHERE Died= "N/A";
+
+/* Which of the artist died in the same state they were born in?*/
+SELECT c.First_name, c.Last_name, a.Birthplace_state, b.Deathplace_state FROM Country AS a
+JOIN Country AS b ON a.Birthplace_state=b.Deathplace_state
+JOIN Artist AS C ON C.Artist_id=b.Artist_id
+
