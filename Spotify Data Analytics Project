@@ -61,3 +61,13 @@ FROM BIT_DB.Spotifydata);
 SELECT COUNT(ID) AS '# of tracks with tempo greater than 100 and mode of 1'
 FROM BIT_DB.Spotifydata
 WHERE tempo>100 AND song_mode=1;
+/*Calculate the average popularity for the artists in the Spotify data table. Then, for every artist with an average popularity of 90 or above, show their name, their average popularity, and label them as a “Top Star” using Common Table Expressions.*/
+WITH temp_average AS (
+    SELECT artist_name, AVG(popularity) AS average_popularity
+    FROM Spotifydata
+    GROUP BY artist_name
+)
+SELECT artist_name, average_popularity, 'Top Star' AS tag
+FROM temp_average
+WHERE average_popularity>=90;
+
