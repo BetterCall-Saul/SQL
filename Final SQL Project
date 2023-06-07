@@ -1,4 +1,4 @@
-
+/*For this project, I downloaded a dataset called chinook, which represents a digital media store and includes tables for artists, albums, media tracks, invoices, and customers. I performed analytics on the data using SQL.*/
 
 /*Show Customers (their full names, customer ID, and country) who are not in the US.*/
 SELECT FirstName, LastName, CustomerId, Country 
